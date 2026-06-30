@@ -13,11 +13,11 @@ is trained on **behavioral/spatial features only** — no span-derived features 
 - Features: behavioral/spatial only (no activity span, no first/last dates)
 - User filter: ≥5 photos (~1025 users: 668 tourist / 357 local)
 - Model: `RandomForestClassifier`, `class_weight="balanced"` (~65/35 imbalance)
-- All data + model work in a single notebook: `01_part1_supervised.ipynb`
+- The **entire project (Part 1 + Part 2)** lives in one notebook: `city_explorer.ipynb`
 
 **Steps:**
 - [x] 0. Save this plan + set up env (install `requirements.txt` into `.venv`, verify imports)
-- [ ] 1. Cleaning section — fold existing pipeline in; output `flickr_clean.csv`
+- [x] 1. Cleaning section — single documented cell; output `flickr_clean.csv`
 - [ ] 2. EDA — photos over time, spatial scatter, photos-per-user dist, label balance
 - [ ] 3. Labeling — per-user span → label; filter ≥5 photos; per-user label table
 - [ ] 4. Feature engineering (no leakage) — volume, spatial, revisit, temporal features

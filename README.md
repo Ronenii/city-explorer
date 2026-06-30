@@ -6,6 +6,8 @@
 
 This project analyzes human movement and behavior in urban environments using a Flickr photo dataset of Tel Aviv.
 
+**Part 1** focuses on **supervised machine learning** — classifying users as tourists or locals and learning behavioral patterns from labeled data.
+
 ## Dataset
 
 - **Source:** Flickr user images geotagged in Tel Aviv
@@ -24,11 +26,22 @@ Users are classified based on their photo activity span:
 - Analyze movement patterns relative to Points of Interest (POIs) across the city
 - Build synthetic agents to simulate and model urban movement behavior
 
+**Part 2** focuses on **unsupervised machine learning** — simulating synthetic agents on the city grid and discovering POIs through clustering.
+
 ## Methodology
 
-1. **Agent-Based Modeling (ABM):** Create synthetic agents representing tourists and locals
-2. **Environment Rules:** Define rules governing the city grid environment
-3. **Agent Rules:** Define behavioral rules for each agent type based on observed data patterns
+### Part 1 — Supervised Learning
+1. Classify users as tourists or locals based on activity span
+2. Learn and compare behavioral patterns between the two groups
+
+### Part 2 — Unsupervised Learning & Agent-Based Simulation
+1. **Synthetic Agents:** Add simulative agents to the city grid with defined parameters:
+   - Quantity, starting point, walking rules, and environment rules
+2. **POI Discovery:** Apply unsupervised clustering to identify Points of Interest where agents congregate
+   - **K-Means** clustering
+   - **DBSCAN** clustering
+3. **Parameter Tuning:** Vary algorithm parameters and examine how results differ; analyze emergent agent behavior
+4. **Validation:** Compare synthetic agent movements against real (Flickr) agent movements — is there a meaningful relationship?
 
 ## Key Assumptions
 

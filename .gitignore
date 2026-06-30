@@ -8,6 +8,7 @@ __pycache__/
 
 # Generated data
 flickr_clean.csv
+features.csv
 
 # IDE
 .vscode/

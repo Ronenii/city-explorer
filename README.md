@@ -36,6 +36,44 @@ Users are classified based on their photo activity span:
 3. **Labeling** — activity span < 365 days → tourist (0); ≥ 365 days → local (1); label derived inside feature engineering to avoid a separate aggregation pass
 4. **Feature engineering** — 14 per-user behavioral/spatial features with no label leakage (span is never a feature); families: Volume, Spatial, Revisit, Temporal rhythm; output `features.csv`
 5. **Model training** — 80/20 stratified split, `RandomForestClassifier(n_estimators=200, class_weight="balanced")`
+
+#### Feature Definitions (Step 4)
+
+Features are grouped into four families. No span-derived columns are included (no leakage).
+
+**Volume** — how much the user photographs
+
+| Feature | Description |
+|---|---|
+| `n_photos` | Total photos taken |
+| `n_active_days` | Distinct calendar days with at least one photo |
+| `photos_per_active_day` | Average photos per active day (`n_photos / n_active_days`) |
+
+**Spatial** — where the user photographs
+
+| Feature | Description |
+|---|---|
+| `std_lon` | Standard deviation of photo longitudes (east-west spread) |
+| `std_lat` | Standard deviation of photo latitudes (north-south spread) |
+| `n_distinct_cells` | Distinct ~1 km grid cells visited (`round(lon,2)_round(lat,2)`) |
+| `bbox_area` | Area of the bounding box around all photo locations (degrees²) |
+| `bbox_diag` | Diagonal of the bounding box (degrees) |
+| `radius_of_gyration` | RMS distance from the user's centroid: `√mean((lon−lon̄)²+(lat−lat̄)²)` |
+
+**Revisit** — how the user concentrates or distributes effort across locations
+
+| Feature | Description |
+|---|---|
+| `mean_photos_per_cell` | Average photos per distinct cell (revisit intensity) |
+| `location_entropy` | Shannon entropy of cell visit frequencies — high = uniform spread, low = concentrated at few spots |
+
+**Temporal rhythm** — when the user photographs
+
+| Feature | Description |
+|---|---|
+| `weekend_ratio` | Fraction of photos taken on Saturday or Sunday |
+| `hour_std` | Standard deviation of hour-of-day across all photos (spread of shooting times) |
+| `n_distinct_months` | Distinct calendar months with at least one photo (breadth of visit period) |
 6. **Evaluation** — classification report, confusion matrix, 5-fold CV F1, feature importances
 7. **Analysis** — four research questions answered with plots (see below)
 8. **Persist artifacts** — `model.joblib` + `predictions.csv` for use in the dashboard

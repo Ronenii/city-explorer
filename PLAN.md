@@ -23,9 +23,9 @@ is trained on **behavioral/spatial features only** — no span-derived features 
 - [x] 4. Feature engineering (no leakage) — volume, spatial, revisit, temporal features
 - [x] 5. Model training — stratified split, `RandomForestClassifier(class_weight="balanced")`
 - [x] 6. Evaluation — accuracy, P/R/F1, confusion matrix, CV, feature importances
-- [ ] 6.5 Analysis — answer the 4 research questions with plots in the notebook
-- [ ] 7. Persist artifacts — save model (joblib) + per-user feature/label table (CSV)
-- [ ] 8. Streamlit Part 1 results — display model metrics, confusion matrix, ROC,
+- [x] 6.5 Analysis — answer the 4 research questions with plots in the notebook
+- [x] 7. Persist artifacts — save model (joblib) + per-user feature/label table (CSV)
+- [x] 8. Streamlit Part 1 results — display model metrics, confusion matrix,
        feature importances, and per-user predicted tourist/local on the map
        (extends `app.py`, reads the saved model + feature table from step 7)
 

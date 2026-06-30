@@ -21,7 +21,7 @@ is trained on **behavioral/spatial features only** — no span-derived features 
 - [x] 2. EDA — photos over time, spatial scatter, photos-per-user dist, label balance
 - [x] 3. Labeling — per-user span → label; filter ≥5 photos; per-user label table
 - [x] 4. Feature engineering (no leakage) — volume, spatial, revisit, temporal features
-- [ ] 5. Model training — stratified split, `RandomForestClassifier(class_weight="balanced")`
+- [x] 5. Model training — stratified split, `RandomForestClassifier(class_weight="balanced")`
 - [ ] 6. Evaluation — accuracy, P/R/F1, confusion matrix, ROC-AUC, CV, feature importances
 - [ ] 7. Persist artifacts — save model (joblib) + per-user feature/label table (CSV)
 - [ ] 8. Streamlit Part 1 results — display model metrics, confusion matrix, ROC,

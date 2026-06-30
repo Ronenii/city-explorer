@@ -1,0 +1,15 @@
+pandas
+numpy
+geopandas
+shapely
+pyproj
+fiona
+geodatasets
+scikit-learn
+mesa
+matplotlib
+seaborn
+streamlit
+pydeck
+jupyterlab
+openpyxl

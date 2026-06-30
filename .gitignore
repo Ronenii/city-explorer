@@ -1,0 +1,21 @@
+# Virtual environment
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+*.pyc
+__pycache__/
+
+# Generated data
+flickr_clean.csv
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit cache
+.streamlit/

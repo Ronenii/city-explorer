@@ -32,16 +32,32 @@ Users are classified based on their photo activity span:
 
 ### Part 1 — Supervised Learning
 1. Classify users as tourists or locals based on activity span
-2. Learn and compare behavioral patterns between the two groups
+2. Engineer per-user features (location diversity, visit frequency, temporal spread, etc.)
+3. Train a **Random Forest** classifier using **scikit-learn**
+4. Evaluate with accuracy, F1-score, and confusion matrix; analyze feature importances
 
 ### Part 2 — Unsupervised Learning & Agent-Based Simulation
-1. **Synthetic Agents:** Add simulative agents to the city grid with defined parameters:
-   - Quantity, starting point, walking rules, and environment rules
-2. **POI Discovery:** Apply unsupervised clustering to identify Points of Interest where agents congregate
+1. **Synthetic Agents:** Implement agent-based simulation using **Mesa**
+   - Parameters: agent quantity, starting position, walking rules, environment rules
+   - Each agent represents a tourist or local moving on the city grid
+2. **POI Discovery:** Apply unsupervised clustering via **scikit-learn** to identify Points of Interest where agents congregate
    - **K-Means** clustering
    - **DBSCAN** clustering
 3. **Parameter Tuning:** Vary algorithm parameters and examine how results differ; analyze emergent agent behavior
 4. **Validation:** Compare synthetic agent movements against real (Flickr) agent movements — is there a meaningful relationship?
+
+## Tools & Libraries
+
+| Category | Libraries |
+|---|---|
+| Data handling | `pandas`, `numpy` |
+| Geospatial | `geopandas`, `shapely`, `pyproj`, `fiona`, `geodatasets` |
+| Machine Learning | `scikit-learn` (Random Forest, KMeans, DBSCAN) |
+| Agent-Based Modeling | `mesa` |
+| Visualization | `matplotlib`, `seaborn`, `pydeck` |
+| Dashboard | `streamlit` |
+| Notebooks | `jupyterlab` |
+| File I/O | `openpyxl` |
 
 ## Key Assumptions
 

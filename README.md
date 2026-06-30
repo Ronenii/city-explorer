@@ -31,10 +31,23 @@ Users are classified based on their photo activity span:
 ## Methodology
 
 ### Part 1 — Supervised Learning
-1. Classify users as tourists or locals based on activity span
-2. Engineer per-user features (location diversity, visit frequency, temporal spread, etc.)
-3. Train a **Random Forest** classifier using **scikit-learn**
-4. Evaluate with accuracy, F1-score, and confusion matrix; analyze feature importances
+1. **Data cleaning** — drop nulls, validate dates/coordinates, land-check against Natural Earth polygons, remove duplicates; output `flickr_clean.csv`
+2. **EDA** — photos per year, spatial scatter, users-by-photo-count distribution, tourist/local label balance
+3. **Labeling** — activity span < 365 days → tourist (0); ≥ 365 days → local (1); label derived inside feature engineering to avoid a separate aggregation pass
+4. **Feature engineering** — 14 per-user behavioral/spatial features with no label leakage (span is never a feature); families: Volume, Spatial, Revisit, Temporal rhythm; output `features.csv`
+5. **Model training** — 80/20 stratified split, `RandomForestClassifier(n_estimators=200, class_weight="balanced")`
+6. **Evaluation** — classification report, confusion matrix, 5-fold CV F1, feature importances
+7. **Analysis** — four research questions answered with plots (see below)
+8. **Persist artifacts** — `model.joblib` + `predictions.csv` for use in the dashboard
+
+#### Research Questions (Step 6.5)
+
+| # | Question | Key finding |
+|---|---|---|
+| 1 | What are the more popular regions? | Activity concentrates along the beachfront and city centre (Dizengoff, Old Jaffa) |
+| 2 | Are popular regions different for tourists vs locals? | Tourists cluster tightly on the coast and landmarks; locals spread inland across residential areas |
+| 3 | What are the similarities/differences within each group? | Locals have a ~58% larger median radius of gyration (0.0183° vs 0.0116°) and visit twice as many distinct grid cells (8 vs 4); tourists are more spatially homogeneous |
+| 4 | What are the behavioral differences between groups? | Strongest contrasts: `n_active_days` (12 vs 3), `n_distinct_cells`, `radius_of_gyration`; weekend ratio is similar (~0.20–0.25) |
 
 ### Part 2 — Unsupervised Learning & Agent-Based Simulation
 1. **Synthetic Agents:** Implement agent-based simulation using **Mesa**

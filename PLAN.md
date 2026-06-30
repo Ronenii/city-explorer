@@ -22,7 +22,7 @@ is trained on **behavioral/spatial features only** — no span-derived features 
 - [x] 3. Labeling — per-user span → label; filter ≥5 photos; per-user label table
 - [x] 4. Feature engineering (no leakage) — volume, spatial, revisit, temporal features
 - [x] 5. Model training — stratified split, `RandomForestClassifier(class_weight="balanced")`
-- [ ] 6. Evaluation — accuracy, P/R/F1, confusion matrix, ROC-AUC, CV, feature importances
+- [x] 6. Evaluation — accuracy, P/R/F1, confusion matrix, CV, feature importances
 - [ ] 7. Persist artifacts — save model (joblib) + per-user feature/label table (CSV)
 - [ ] 8. Streamlit Part 1 results — display model metrics, confusion matrix, ROC,
        feature importances, and per-user predicted tourist/local on the map

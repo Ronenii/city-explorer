@@ -19,8 +19,8 @@ is trained on **behavioral/spatial features only** — no span-derived features 
 - [x] 0. Save this plan + set up env (install `requirements.txt` into `.venv`, verify imports)
 - [x] 1. Cleaning section — single documented cell; output `flickr_clean.csv`
 - [x] 2. EDA — photos over time, spatial scatter, photos-per-user dist, label balance
-- [ ] 3. Labeling — per-user span → label; filter ≥5 photos; per-user label table
-- [ ] 4. Feature engineering (no leakage) — volume, spatial, revisit, temporal features
+- [x] 3. Labeling — per-user span → label; filter ≥5 photos; per-user label table
+- [x] 4. Feature engineering (no leakage) — volume, spatial, revisit, temporal features
 - [ ] 5. Model training — stratified split, `RandomForestClassifier(class_weight="balanced")`
 - [ ] 6. Evaluation — accuracy, P/R/F1, confusion matrix, ROC-AUC, CV, feature importances
 - [ ] 7. Persist artifacts — save model (joblib) + per-user feature/label table (CSV)
